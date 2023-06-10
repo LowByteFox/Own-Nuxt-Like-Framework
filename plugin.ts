@@ -1,4 +1,5 @@
 import { Buchta } from "buchta";
+import { css } from "buchta/plugins/css";
 import { vue } from "buchta/plugins/vue";
 import Elysia from "elysia";
 import { existsSync, rmSync } from "fs";
@@ -14,8 +15,6 @@ const earlyHook = (build: Buchta) => {
         const func = async (_: any) => {
             return Bun.file(data.path);
         }
-
-        console.log(data);
 
         extraRoutes.set(data.route, func);
     })
@@ -72,7 +71,7 @@ export function bux(app: Elysia) {
         ssr: config.ssr,
         rootDir: process.cwd(),
         dirs: ["pages", "public", "assets", "components", "layouts"],
-        plugins: [vue()]
+        plugins: [vue(), css()]
     });
 
     buchta.earlyHook = earlyHook;
