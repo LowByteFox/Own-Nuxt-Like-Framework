@@ -7,3 +7,6 @@ Install dependencies, apply the patch
 ```sh
 sed -i "s/this.builder.prepare();/this.builder.prepare(this.config?.dirs ?? ['public']);/" node_modules/buchta/src/buchta.ts
 ```
+
+## Note
+When using bun 0.6.12 and higher, disable SSR
